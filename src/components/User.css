@@ -1,0 +1,7 @@
+.card-body:hover{
+  transform: scale(1.1);
+  margin-left: 10px;
+}
+.card-body{
+  transition: transform .5s;
+}
