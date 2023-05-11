@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export class UsersForm extends Component {
+export class EditUserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      gen: "",
+      name: props.userInfo.name,
+      email: props.userInfo.email,
+      gen: props.userInfo.gen,
+      id: props.userInfo.id,
     };
   }
 
@@ -21,7 +22,8 @@ export class UsersForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addUser(this.state);
+    this.props.editUser(this.state.id, this.state);
+    this.props.closeModal();
   };
 
   render() {
@@ -73,4 +75,4 @@ export class UsersForm extends Component {
   }
 }
 
-export default UsersForm;
+export default EditUserForm;

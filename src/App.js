@@ -31,6 +31,11 @@ export class App extends Component {
       users: [...this.state.users, user],
     });
   };
+  editUser = (id, updatedUser) => {
+    this.setState({
+      users:this.state.users.map(user=>user.id===id ? updatedUser : user)
+    });
+  };
   deleteUser = (id) => {
     let activeUsers = this.state.users.filter((user) => user.id !== id);
     this.setState({
@@ -49,6 +54,7 @@ export class App extends Component {
               <Users
                 usersData={this.state.users}
                 deleteUser={this.deleteUser}
+                editUser={this.editUser}
               />
             </Col>
           </Row>
