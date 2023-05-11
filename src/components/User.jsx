@@ -1,8 +1,18 @@
 import React from "react";
-import { Card, Col } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 import "./User.css";
 
 function User(props) {
+  const handleEdit = (e) => {
+    e.preventDefault();
+    console.log("edit");
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    props.deleteUser(props.userInfo.id);
+  };
+
   return (
     <Col md="4">
       <Card
@@ -25,8 +35,16 @@ function User(props) {
               <strong>Gen</strong>: {props.userInfo.gen}
             </p>
           </Card.Text>
-          <Card.Link href="#">Edit</Card.Link>
-          <Card.Link href="#">Delete</Card.Link>
+          <Card.Link href="#">
+            <Button variant="primary" size="sm" onClick={handleEdit}>
+              Edit
+            </Button>
+          </Card.Link>
+          <Card.Link href="#">
+            <Button variant="dark" size="sm" onClick={handleDelete}>
+              Delete
+            </Button>
+          </Card.Link>
         </Card.Body>
       </Card>
     </Col>

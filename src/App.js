@@ -14,18 +14,27 @@ export class App extends Component {
           name: "Kwabena",
           email: "kobbyofori9@gmail.com",
           gen: 24,
+          id: "2",
         },
         {
           name: "Kofi",
           email: "kofi@gmail.com",
           gen: 24,
+          id: "3",
         },
       ],
     };
   }
   addNewUser = (user) => {
+    user.id = Math.random().toString();
     this.setState({
       users: [...this.state.users, user],
+    });
+  };
+  deleteUser = (id) => {
+    let activeUsers = this.state.users.filter((user) => user.id !== id);
+    this.setState({
+      users: activeUsers,
     });
   };
   render() {
@@ -37,7 +46,10 @@ export class App extends Component {
               <UsersForm addUser={this.addNewUser} />
             </Col>
             <Col>
-              <Users usersData={this.state.users} />
+              <Users
+                usersData={this.state.users}
+                deleteUser={this.deleteUser}
+              />
             </Col>
           </Row>
         </Container>
